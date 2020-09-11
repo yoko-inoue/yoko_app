@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>"現場管理簿"</h1>
+
+<table class = "table table-sm table-striped">
+  <thead>
+    <tr>
+      <th scope = "co1">"現場名"</th>
+      <th scope = "co1">Start time</th>
+      <th scope = "co1">End time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meetings.each do |meeting| %>
+      <tr>
+        <td><%= meeting.name %></td>
+        <td><%= meeting.start_time %></td>
+        <td><%= meeting.end_time %></td>
+        <td><%= link_to 'Show', meeting %></td>
+        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
+        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= month_calendar events: @meetings do |date, meetings| %>
+  <%= date %>
+
+  <%= meetings.each do |meeting| %>
+    <div>
+      <%= meeting.name %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= link_to 'New Meeting', new_meeting_path %>
