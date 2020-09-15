@@ -28,11 +28,13 @@
 <%= month_calendar events: @meetings do |date, meetings| %>
   <%= date %>
 
-  <%= meetings.each do |meeting| %>
+  <% meetings.each do |meeting| %>
     <div>
       <%= meeting.name %>
+      
     </div>
   <% end %>
+
 <% end %>
 
 <%= link_to '新規作成', new_meeting_path %>
