@@ -17,16 +17,16 @@
         <td><%= meeting.name %></td>
         <td><%= meeting.start_time %></td>
         <td><%= meeting.end_time %></td>
-        <td><%= link_to 'Show', meeting %></td>
-        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
-        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', meeting %></td>
+        <td><%= link_to '編集', edit_meeting_path(meeting) %></td>
+        <td><%= link_to '削除', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <%= month_calendar events: @meetings do |date, meetings| %>
-  <%= date %>
+  <%= date.day%>
 
   <% meetings.each do |meeting| %>
     <div>
