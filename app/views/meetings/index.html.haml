@@ -1,0 +1,26 @@
+%p#notice= notice
+%h1 現場管理簿
+%table.table.table-sm.table-striped
+  %thead
+    %tr
+      %th{:scope => "co1"} 現場名
+      %th{:scope => "co1"} 就業開始
+      %th{:scope => "co1"} 就業終了
+  %tbody
+    - @meetings.each do |meeting|
+      %tr
+        %td= meeting.name
+        %td= meeting.start_time
+        %td= meeting.end_time
+        %td= link_to '詳細', meeting
+        %td= link_to '編集', edit_meeting_path(meeting)
+        %td= link_to '削除', meeting, method: :delete, data: { confirm: 'Are you sure?' }
+= month_calendar events: @meetings do |date, meetings|
+  = date.day
+  - meetings.each do |meeting|
+    .event
+      = meeting.name
+      .member_name
+        = meeting.member
+      
+= link_to '新規作成', new_meeting_path

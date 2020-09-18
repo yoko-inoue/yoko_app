@@ -1,0 +1,23 @@
+= form_with(model: meeting, local: true) do |form|
+  - if meeting.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(meeting.errors.count, "error")
+        prohibited this meeting from being saved:
+      %ul
+        - meeting.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :name
+    = form.text_field :name
+  .field
+    = form.label :member
+    = form.text_field :member
+  .field
+    = form.label :start_time
+    = form.datetime_select :start_time
+  .field
+    = form.label :end_time
+    = form.datetime_select :end_time
+  .actions
+    = form.submit
