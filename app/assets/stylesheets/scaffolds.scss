@@ -7,10 +7,22 @@ thead{
     background-color: darkturquoise;
   }
 }
-
 .simple-calendar{
   .calendar-heading{
     font-weight: bold;
     font-size: larger;
+  }
+  .day{
+    font-weight: bold;
+
+    .event{
+      font-weight: normal;
+      color: blue;
+
+      .member_name{
+        font-size: small;
+        color: black;
+      }
+    }
   }
 }
